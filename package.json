@@ -16,6 +16,8 @@
     "cypress:open": "cypress open"
   },
   "devDependencies": {
-    "cypress": "^15.7.1"
+    "@testing-library/cypress": "^10.1.0",
+    "cypress": "^15.8.0",
+    "cypress-real-events": "^1.15.0"
   }
 }

@@ -8,5 +8,6 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     baseUrl: "https://automationexercise.com/",
+    supportFile: "cypress/support/e2e.js"
   },
 });

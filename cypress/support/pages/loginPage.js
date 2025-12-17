@@ -1,0 +1,6 @@
+export const signupLoginButton = '[href="/login"]'
+export const loginText = 'Login to your account'
+export const email = '[data-qa="login-email"]'
+export const password = '[name="password"]'
+export const loginButton = '[data-qa="login-button"]'
+export const userName = 'testAutomation3'
