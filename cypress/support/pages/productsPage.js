@@ -1,0 +1,5 @@
+export const hoverProduct = '.product-image-wrapper'
+export const addProductButton = '[data-product-id="24"]'
+export const addMessageText = 'Your product has been added to cart.'
+export const viewCartButton = '[href="/view_cart"]'
+export const viewCartUrl = '/view_cart'

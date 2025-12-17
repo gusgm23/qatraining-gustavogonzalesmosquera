@@ -1,5 +1,7 @@
 import { loginData } from "../../fixtures/purchaseData/loginData"
+import { Kidsproducts } from "../../support/actions/homePageAction"
 import { checkLoginPage, fillOutLoginForm, verifyUserLoggedIn } from "../../support/actions/loginAction"
+import { addProductToCart, popUpViewCart, verifyCartPage } from "../../support/actions/productsAction"
 
 describe('Login functionality - Automation Exercise Page', {testIsolation: false}, () => {
     before('Loading Page', () => {
@@ -13,17 +15,13 @@ describe('Login functionality - Automation Exercise Page', {testIsolation: false
     })
 
     it('Check that the products are displayed in the kids category', () => {
-        cy.get('[href="#Kids"]').click()
-        cy.get('[href="/category_products/5"]').click()
-        cy.contains('h2', 'Kids - Tops & Shirts Products').should('be.visible')
+        Kidsproducts()
     })
     
     it('Test that the user can add a product', () => {
-        cy.get('.product-image-wrapper').last().realHover()
-        cy.get('[data-product-id="24"]').eq(1).click()
-        cy.contains('p', 'Your product has been added to cart.').should('be.visible')
-        cy.get('[href="/view_cart"]').eq(1).click()
-        cy.url().should('include', '/view_cart')
+        addProductToCart()
+        popUpViewCart()
+        verifyCartPage()
     })
 
     it('Verify that the user can proceed with checkout', () => {
