@@ -1,11 +1,12 @@
 import { loginData } from "../../fixtures/purchaseData/loginData"
-import { kidsproducts } from "../../support/actions/homePageAction"
 import { checkLoginPage, fillOutLoginForm, verifyUserLoggedIn } from "../../support/actions/loginAction"
-import { addProductToCart, popUpViewCart, proceedToCheckout, verifyCartPage, verifyCheckoutPage, verifyProductKidsDetails } from "../../support/actions/productsAction"
-import { proceedToPayment, verifyPaymentPage, verifyPersonalInfo, verifyPurchaseSummary } from "../../support/actions/checkoutAction"
-import { filloutPaymentForm, verifyPaymentSuccess } from "../../support/actions/paymentAction"
-import { paymentData } from "../../fixtures/purchaseData/paymentData"
+import { brandProducts } from "../../support/actions/homePageAction"
 import { logoutPage } from "../../support/actions/logoutAction"
+import { addToCartProduct, proceedToCheckout, sendReview, verifyCartPage, verifyCheckoutPage, viewProductDetails } from "../../support/actions/productsAction"
+import { sendReviewData } from "../../fixtures/purchaseData/sendReviewData"
+import { verifyPersonalInfo, proceedToPayment, verifyPaymentPage, verifyPurchaseSummary29 } from "../../support/actions/checkoutAction"
+import { paymentData } from "../../fixtures/purchaseData/paymentData"
+import { filloutPaymentForm, verifyPaymentSuccess } from "../../support/actions/paymentAction"
 
 describe('Login functionality - Automation Exercise Page', {testIsolation: false}, () => {
     before('Loading Page', () => {
@@ -18,25 +19,25 @@ describe('Login functionality - Automation Exercise Page', {testIsolation: false
         verifyUserLoggedIn()
     })
 
-    it('Check that the products are displayed in the kids category', () => {
-        kidsproducts()
+    it('Check that the products are displayed in the brand options', () => {
+        brandProducts()
     })
     
-    it('Test that the user can add a product', () => {
-        addProductToCart()
-        popUpViewCart()
+    it('Test that the user can add a product and send a review', () => {
+        viewProductDetails()
+        sendReview(sendReviewData.reviewName, sendReviewData.reviewEmail, sendReviewData.reviewText)
+        addToCartProduct()
         verifyCartPage()
     })
 
     it('Verify that the user can proceed with checkout', () => {
-        verifyProductKidsDetails()
         proceedToCheckout()
         verifyCheckoutPage()
     })
 
     it('Check the address and the purchase summary', () => {
         verifyPersonalInfo()
-        verifyPurchaseSummary()
+        verifyPurchaseSummary29()
         proceedToPayment()
         verifyPaymentPage()
     })

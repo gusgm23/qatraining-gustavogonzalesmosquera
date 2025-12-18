@@ -1,4 +1,4 @@
-import { checkFullName, checkCompany, checkAddress, checkCity, checkCountry, checkPhone, checkProductName, placeOrderButton, paymentUrl } from "../pages/checkoutPage"
+import { checkFullName, checkCompany, checkAddress, checkCity, checkCountry, checkPhone, placeOrderButton, paymentUrl, checkProductName24, checkProductName29 } from "../pages/checkoutPage"
 
 export const verifyPersonalInfo = () => {
     cy.contains('li', checkFullName).should('be.visible')
@@ -10,7 +10,7 @@ export const verifyPersonalInfo = () => {
 }
 
 export const verifyPurchaseSummary = () => {
-    cy.get(checkProductName).should('be.visible')
+    cy.get(checkProductName24).should('be.visible')
 }
 
 export const proceedToPayment = () => {
@@ -19,4 +19,8 @@ export const proceedToPayment = () => {
 
 export const verifyPaymentPage = () => {
     cy.url().should('include', paymentUrl)
+}
+
+export const verifyPurchaseSummary29 = () => {
+    cy.get(checkProductName29).should('be.visible')
 }
