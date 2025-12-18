@@ -1,4 +1,4 @@
-import { addMessageText, addProductButton, hoverProduct, viewCartButton, viewCartUrl } from "../pages/productsPage"
+import { addMessageText, addProductButton, checkoutButton, checkoutUrl, hoverProduct, shoppingCart, tittleItem, viewCartButton, viewCartUrl } from "../pages/productsPage"
 
 export const addProductToCart = () => {
     cy.get(hoverProduct).last().realHover()
@@ -12,4 +12,14 @@ export const popUpViewCart = () => {
 
 export const verifyCartPage = () => {
     cy.url().should('include', viewCartUrl)
+}
+
+export const proceedToCheckout = () => {
+    cy.get(shoppingCart).should('be.visible')
+    cy.get(tittleItem).should('be.visible')
+    cy.get(checkoutButton).click()
+}
+
+export const verifyCheckoutPage = () => {
+    cy.url().should('include', checkoutUrl)
 }

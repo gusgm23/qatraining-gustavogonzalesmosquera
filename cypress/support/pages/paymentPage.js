@@ -1,0 +1,8 @@
+export const cardNameInput = '[name="name_on_card"]'
+export const cardNumberInput = '[name="card_number"]'
+export const cardCVCInput = '[name="cvc"]'
+export const cardExpiryMonthInput = '[name="expiry_month"]'
+export const cardExpiryYearInput = '[name="expiry_year"]'
+export const payAndConfirmOrderButton = '#submit'
+export const orderSuccessMessage = 'Congratulations! Your order has been confirmed!'
+export const continueButton = '.btn-primary'

@@ -1,7 +1,11 @@
 import { loginData } from "../../fixtures/purchaseData/loginData"
 import { Kidsproducts } from "../../support/actions/homePageAction"
 import { checkLoginPage, fillOutLoginForm, verifyUserLoggedIn } from "../../support/actions/loginAction"
-import { addProductToCart, popUpViewCart, verifyCartPage } from "../../support/actions/productsAction"
+import { addProductToCart, popUpViewCart, proceedToCheckout, verifyCartPage, verifyCheckoutPage } from "../../support/actions/productsAction"
+import { proceedToPayment, verifyPaymentPage, verifyPersonalInfo, verifyPurchaseSummary } from "../../support/actions/checkoutAction"
+import { filloutPaymentForm, verifyPaymentSuccess } from "../../support/actions/paymentAction"
+import { paymentData } from "../../fixtures/purchaseData/paymentData"
+import { logoutPage } from "../../support/actions/logoutAction"
 
 describe('Login functionality - Automation Exercise Page', {testIsolation: false}, () => {
     before('Loading Page', () => {
@@ -25,36 +29,23 @@ describe('Login functionality - Automation Exercise Page', {testIsolation: false
     })
 
     it('Verify that the user can proceed with checkout', () => {
-        cy.get('.active').should('be.visible')
-        cy.get('[href="/product_details/24"]').should('be.visible')
-        cy.get('[class="btn btn-default check_out"]').click()
-        cy.url().should('include', '/checkout')
+        proceedToCheckout()
+        verifyCheckoutPage()
     })
 
     it('Check the address and the purchase summary', () => {
-        cy.contains('li', 'Mr. fNAutomation3 lNAutomation3').should('be.visible')
-        cy.contains('li', 'Believe').should('be.visible')
-        cy.contains('li', 'Av.Blanco Galindo km 3/2').should('be.visible')
-        cy.contains('li', 'Texas Houston 0000').should('be.visible')
-        cy.contains('li', 'United States').should('be.visible')
-        cy.contains('li', '59172708582').should('be.visible')
-        cy.get('[href="/product_details/24"]').should('be.visible')
-        cy.get('[href="/payment"]').click()
-        cy.url().should('include', '/payment')
+        verifyPersonalInfo()
+        verifyPurchaseSummary()
+        proceedToPayment()
+        verifyPaymentPage()
     })
 
     it('Verify that the order was placed successfully', () => {
-        cy.get('[name="name_on_card"]').type('prueba cypress')
-        cy.get('[name="card_number"]').type('4242424242424242')
-        cy.get('[name="cvc"]').type('125')
-        cy.get('[name="expiry_month"]').type('01')
-        cy.get('[name="expiry_year"]').type('2029')
-        cy.get('#submit').click()
-        cy.contains('p', 'Congratulations! Your order has been confirmed!').should('be.visible')
-        cy.get('.btn-primary').click()
+        filloutPaymentForm(paymentData.cardName, paymentData.cardNumber, paymentData.cardCVC, paymentData.cardExpiryMonth, paymentData.cardExpiryYear)
+        verifyPaymentSuccess()
     })
 
     after('Logout User', () => {
-        cy.get('[href="/logout"]').click()
+        logoutPage()
     })
 })
