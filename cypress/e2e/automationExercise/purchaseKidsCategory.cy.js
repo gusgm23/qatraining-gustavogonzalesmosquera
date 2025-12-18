@@ -1,5 +1,5 @@
 import { loginData } from "../../fixtures/purchaseData/loginData"
-import { Kidsproducts } from "../../support/actions/homePageAction"
+import { kidsproducts } from "../../support/actions/homePageAction"
 import { checkLoginPage, fillOutLoginForm, verifyUserLoggedIn } from "../../support/actions/loginAction"
 import { addProductToCart, popUpViewCart, proceedToCheckout, verifyCartPage, verifyCheckoutPage } from "../../support/actions/productsAction"
 import { proceedToPayment, verifyPaymentPage, verifyPersonalInfo, verifyPurchaseSummary } from "../../support/actions/checkoutAction"
@@ -19,7 +19,7 @@ describe('Login functionality - Automation Exercise Page', {testIsolation: false
     })
 
     it('Check that the products are displayed in the kids category', () => {
-        Kidsproducts()
+        kidsproducts()
     })
     
     it('Test that the user can add a product', () => {
