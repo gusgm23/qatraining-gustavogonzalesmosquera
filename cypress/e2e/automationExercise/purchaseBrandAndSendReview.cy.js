@@ -8,7 +8,7 @@ import { verifyPersonalInfo, proceedToPayment, verifyPaymentPage, verifyPurchase
 import { paymentData } from "../../fixtures/purchaseData/paymentData"
 import { filloutPaymentForm, verifyPaymentSuccess } from "../../support/actions/paymentAction"
 
-describe('Login functionality - Automation Exercise Page', {testIsolation: false}, () => {
+describe('Group 2 - Purchase a product from Brand and send a review of it', {testIsolation: false}, () => {
     before('Loading Page', () => {
         cy.visit('/')
     })

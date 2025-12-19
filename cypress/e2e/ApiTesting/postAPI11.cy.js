@@ -1,4 +1,4 @@
-describe('HTTP POST Request to create a new user', () => {
+describe('API 11: POST To Create/Register User Account', () => {
     it('POST to create/register user account', () => {
         cy.fixture('apiData/postUser.json').then((data) => {
             cy.request({

@@ -1,4 +1,4 @@
-describe('HTTP GET Request', () => {
+describe('API 14: GET user account detail by email', () => {
     it('GET user account detail by email', () => {
         cy.fixture('apiData/getEmail.json').then((data) => {
             return cy.request({

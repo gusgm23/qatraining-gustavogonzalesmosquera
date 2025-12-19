@@ -7,7 +7,7 @@ import { filloutPaymentForm, verifyPaymentSuccess } from "../../support/actions/
 import { paymentData } from "../../fixtures/purchaseData/paymentData"
 import { logoutPage } from "../../support/actions/logoutAction"
 
-describe('Login functionality - Automation Exercise Page', {testIsolation: false}, () => {
+describe('Group 1 - Make the purchase of a product from the Kids category', {testIsolation: false}, () => {
     before('Loading Page', () => {
         cy.visit('/')
     })
