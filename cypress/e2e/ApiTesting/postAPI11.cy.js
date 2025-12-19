@@ -17,35 +17,20 @@ describe('HTTP POST Request to create a new user', () => {
         })
     }) 
 
-    it('POST to create/register user account', () => {
-        cy.request({
-            method: 'DELETE',
-            url: 'https://automationexercise.com/api/deleteAccount',
-            form: true,
-            body: {
-                name: 'prueba',
-                email: 'pruebagustavo@yopmail.com',
-                password: '123456',
-                tilte: 'Mr',
-                birth_date: '19',
-                birth_month: 'January',
-                birth_year: '1995', 
-                firstname: 'gus', 
-                lastname: 'gon', 
-                company: 'empresa', 
-                address1: 'calle prueba123', 
-                address2: 'calle prueba456', 
-                country: 'Canada', 
-                zipcode: '0000', 
-                state: 'estado prueba', 
-                city: 'ciudad prueba', 
-                mobile_number: '12345678'
-            }
-        }).then((response) => {
-            expect(response.status).to.eq(200)
-            const body = typeof response.body === 'string' ? JSON.parse(response.body) : response.body
-            cy.log('Status code: ' + response.status)
-            cy.log('Response message: ' + body.message)
+    //This is a test DELETE request added to try out with the POST assigned for the project 
+    it('DELETE user account', () => {
+        cy.fixture('apiData/postUser.json').then((data) => {
+            cy.request({
+                method: 'DELETE',
+                url: 'https://automationexercise.com/api/deleteAccount',
+                form: true,
+                body: data
+            }).then((response) => {
+                expect(response.status).to.eq(200)
+                const body = typeof response.body === 'string' ? JSON.parse(response.body) : response.body
+                cy.log('Status code: ' + response.status)
+                cy.log('Response message: ' + body.message)
+            })
         })
     }) 
 })

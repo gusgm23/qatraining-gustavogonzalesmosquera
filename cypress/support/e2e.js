@@ -21,3 +21,4 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   return false
 })
 import '@testing-library/cypress/add-commands'
+import 'cypress-mochawesome-reporter/register'
